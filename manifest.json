@@ -1,0 +1,68 @@
+{
+  "name": "what-is-my-ip",
+  "vendor": "vtexromania",
+  "version": "0.2.23",
+  "title": "What is my IP",
+  "description": "Reference app for VTEX IO Services. Check external IP address",
+  "mustUpdateAt": "2018-01-04",
+  "categories": [],
+  "dependencies": {},
+  "builders": {
+    "node": "6.x",
+    "docs": "0.x"
+  },
+  "scripts": {
+    "prereleasy": "bash lint.sh"
+  },
+  "credentialType": "absolute",
+  "policies": [
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "ifconfig.me",
+        "path": "*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "logs.us-east-1.amazonaws.com",
+        "path": "*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "logs.eu-central-1.amazonaws.com",
+        "path": "*"
+      }
+    },
+    {
+      "name": "colossus-fire-event"
+    },
+    {
+      "name": "colossus-write-logs"
+    }
+  ],
+  "settingsSchema": {
+    "title": "Stock credentials",
+    "type": "object",
+    "properties": {
+      "awsconfig": {
+        "title": "AWS config : us-east-1 region ONLY!!!",
+        "type": "object",
+        "properties": {
+          "accesskeyid": {
+            "title": "Access key ID",
+            "type": "string"
+          },
+          "secretaccesskey": {
+            "title": "Secret access key",
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
+}
